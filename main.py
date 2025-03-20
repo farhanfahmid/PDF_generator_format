@@ -20,8 +20,10 @@ for index, row in df.iterrows():
     # pdf.line(x1,y1, x2,y2) is the template for coordinates of drawing a line on the page
     pdf.line(10,22, 200, 22)
 
+    for i in range(row['Pages']-1):
+        pdf.add_page()
 
-    # pdf.cell(w=0, h=12, txt="Whazzuuuuuup", align="L", ln=1, border=1)
+
 
 #generate output pdf file
 pdf.output("output.pdf")
