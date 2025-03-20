@@ -24,17 +24,26 @@ for index, row in df.iterrows():
 
     #adding footer
     pdf.ln(265) #265mm breaklines to go down the page
-    pdf.set_font(family='Times', style='I', size=12)
+    pdf.set_font(family='Times', style='I', size=8)
     pdf.set_text_color(0, 0, 254)
     pdf.cell(w=0, h=12, txt=row['Topic'], align="R")
 
+    #adding horizontal lines on each master page
+    for y in range(22, 298, 10):
+        pdf.line(10, y, 200, y)
+
+    #adding extra pages for each topic
     for i in range(row['Pages']-1):
         pdf.add_page()
         # adding footer
         pdf.ln(277)  # 265mm breaklines to go down the page
-        pdf.set_font(family='Times', style='I', size=12)
+        pdf.set_font(family='Times', style='I', size=8)
         pdf.set_text_color(0, 0, 254)
         pdf.cell(w=0, h=12, txt=row['Topic'], align="R")
+
+        # adding horizontal lines on each extra page
+        for y in range(22, 298, 10):
+            pdf.line(10, y, 200, y)
 
 
 
